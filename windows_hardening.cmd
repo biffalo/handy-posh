@@ -9,6 +9,8 @@ ftype jsfile="%SystemRoot%\system32\NOTEPAD.EXE" "%1"
 ftype jsefile="%SystemRoot%\system32\NOTEPAD.EXE" "%1"
 ftype vbefile="%SystemRoot%\system32\NOTEPAD.EXE" "%1"
 ::
+::disable ISO mounting in windows explorer
+reg add "HKEY_CLASSES_ROOT\Windows.IsoFile\shell\mount" /v "ProgrammaticAccessOnly" /t REG_SZ /d no /f
 :: Enable early launch antimalware driver for scan of boot-start drivers
 :: 3 is the default which allows good, unknown and 'bad but critical'. Recommend trying 1 for 'good and unknown' or 8 which is 'good only'
 reg add "HKCU\SYSTEM\CurrentControlSet\Policies\EarlyLaunch" /v DriverLoadPolicy /t REG_DWORD /d 3 /f
