@@ -1,5 +1,5 @@
 #gathers logs from an endpoint and puts them in a folder you define in line 2#
-$logpath = "C:\ktemp"
+$logpath = "C:\temp"
 Copy-item C:\Windows\System32\winevt\Logs\Application.evtx -destination $logpath\Application.evtx
 Copy-item C:\Windows\System32\winevt\Logs\Microsoft-Windows-Sysmon%4Operational.evtx -destination $logpath\Sysmon.evtx
 Copy-item C:\Windows\System32\winevt\Logs\System.evtx -destination $logpath\System.evtx
