@@ -19,6 +19,6 @@ tr:nth-child(odd) { background: #b8d1f3; }
 </style>
 "@
 #change lines below wherever your source csv and destination html should be#
-$csv = E:\logdump\results\sigma.csv
-$html = E:\logdump\results\sigma.html
+$csv = "E:\logdump\results\sigma.csv"
+$html = "E:\logdump\results\sigma.html"
 Import-CSV "$csv" | ConvertTo-Html -Head $css -Body "<h1>Chainsaw Report</h1>`n<h5>Generated on $(Get-Date)</h5>" | Out-File "$html"
