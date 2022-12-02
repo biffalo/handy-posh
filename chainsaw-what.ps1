@@ -4,6 +4,9 @@
 $from = (get-date).AddDays(-90).ToString("yyyy-MM-dd")
 $to = Get-Date -Format "yyyy-MM-dd"
 $ct = Get-Date -Format "HH:mm:ss"
+#set the below variable to define where all your chainsaw files and scans are
+$location = "E:\logdump\"
+Set-Location -Path $location
 #execute chainsaw in current directory. it will recursively scan any evt or evtx logs in root or below#
 .\chainsaw.exe hunt . -s sigma/rules/ --mapping .\mappings\sigma-event-logs-all.yml -r rules/ --level high --from "$from T$CT" --to "$to T$CT" --csv --output results
 #chainsaw csv is ugly so we'll do some dirty css/html/powershell magic to give us a more visually pleasing report#
