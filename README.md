@@ -1,9 +1,13 @@
 # handy-posh
-Handy/simple powershell/bat scripts for security and quality of life. Scripts are commented. General descriptions for each below:
+![logo](https://github.com/biffalo/handy-posh/raw/main/handy-logo.png)
+
+
+*Handy/simple powershell/bat scripts for security and quality of life. Scripts are commented. General descriptions for each below:*
 
 - **chainsaw-what.ps1**
 
 Powershell wrapper for chainsaw from https://github.com/WithSecureLabs/chainsaw.
+
 
 
 
@@ -13,9 +17,11 @@ Disables native iso mounting via registry to protect against malicious ISOs.
 
 
 
+
 - **extra-logging.cmd**
 
 Enables extra windows logging to catch threat actors. Best paired with RMM or SIEM.
+
 
 
 
@@ -25,9 +31,11 @@ Copies various log files to desired folder with goal of using them for IR.
 
 
 
+
 - **office-365-have-i-been-pwned-check.ps1**
 
 Checks haveibeenpwned for all emails in a M365 tenancy. Outputs to terminal and csv. Required HIBP API key.
+
 
 
 
@@ -37,15 +45,18 @@ Gathers various information about a Windows server and outputs to a text file. U
 
 
 
+
 - **test-port-loop.ps1**
 
 Uses Test-NetConnection to check if a given port is open on a host. Prompts for host and port. Uses TCP instead of ICMP. Loops until you close your posh window.
 
 
 
+
 - **ublock-chrome-installer.ps1**
 
 Pushes Ublock Origin using registry settings. Handy for non domain environments.
+
 
 
 
