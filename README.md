@@ -70,6 +70,6 @@
 
 ### **windows-hardening.cmd**
 
->  Fixes some silly defaults in Windows 10/11 to reduce chances of TA gaining foothold on an endpoint. Heavily commented.
+>  Fixes some silly defaults in Windows 10/11 and sets additional settings to reduce chances of TA gaining foothold on an endpoint. Heavily commented. Goal here is to be effective with least breakage.
 
 
