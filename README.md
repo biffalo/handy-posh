@@ -28,6 +28,11 @@
 ### **get-logs.ps1**
 
 >  Copies various log files to desired folder with goal of using them for IR.  
+
+
+### **malicious-lnk-finder.ps1**
+
+>  Searches C:\Users recursivley to find any LNK files pointing to cmd.exe or rundll.exe 
   
   
   
