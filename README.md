@@ -32,7 +32,7 @@
 
 ### **malicious-lnk-finder.ps1**
 
->  Searches C:\Users recursivley to find any LNK files pointing to cmd.exe or rundll.exe 
+>  Searches C:\Users recursivley to find any LNK files pointing to cmd.exe, rundll.exe, or powershell.exe
   
   
   
