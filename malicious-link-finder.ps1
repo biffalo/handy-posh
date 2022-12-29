@@ -30,3 +30,15 @@ foreach ($lnkFile in $lnkFiles)
         Write-Host "$($lnkFile.FullName) -> $target"
     }
 }
+foreach ($lnkFile in $lnkFiles)
+{
+    # Get the target of the .LNK file#
+    $target = (New-Object -ComObject WScript.Shell).CreateShortcut($lnkFile.FullName).TargetPath
+
+    # Check if the target contains powershell.exe#
+    if ($target -like "*powershell.exe*")
+    {
+        # Print the full path of the .LNK file and its target#
+        Write-Host "$($lnkFile.FullName) -> $target"
+    }
+}
