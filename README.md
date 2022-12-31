@@ -24,6 +24,10 @@
 
 
 
+###  **fsrm-backup-protect.ps1**
+
+>  Creates FSRM (file server resource manager) file screen/group that only allows specificed file extensions to be written to a given share. Writes eventlog entry if it is violated.
+
 
 ### **get-logs.ps1**
 
