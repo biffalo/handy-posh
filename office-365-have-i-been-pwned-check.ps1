@@ -52,6 +52,6 @@ foreach ($user in $users) {
                 Write-Host $breach.description -ForegroundColor DarkYellow
             }
         }
-        Start-sleep -Milliseconds 2000
+        Start-Sleep -Seconds 20
     }
 }
