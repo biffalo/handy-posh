@@ -34,6 +34,11 @@
 >  Copies various log files to desired folder with goal of using them for IR.  
 
 
+### **get-tasks.ps1**
+
+>  Gets scheduled task names and actions from task sch root / and displays them. If action contains powershell/cmd/rundll it is likely malicious. 
+
+
 ### **malicious-lnk-finder.ps1**
 
 >  Searches C:\Users recursivley to find any LNK files pointing to cmd.exe, rundll.exe, or powershell.exe
