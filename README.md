@@ -76,6 +76,10 @@
 
 
 
+### **web-nav-killer.ps1**
+
+>  Removes WebNavigator/Blaze browser adware/pup binaries and tasks.
+
 
 ### **windows-hardening.cmd**
 
