@@ -29,13 +29,9 @@ foreach ($user in $users) {
 #remove persistence entries left over in reg runkey for each user#
 $users = Get-ChildItem Registry::HKU
 foreach ($user in $users) {
-    if ($user.Name -ne "S-1-5-18") {
-        $key = "HKU:\$($user.Name)\Software\Microsoft\Windows\CurrentVersion\Run"
-        if (Test-Path $key) {
-            Remove-ItemProperty -Path $key -Name "WCUpdate" -ErrorAction SilentlyContinue
-            Remove-ItemProperty -Path $key -Name "WCStartup" -ErrorAction SilentlyContinue
-            Remove-ItemProperty -Path $key -Name "WCEStartup" -ErrorAction SilentlyContinue
-            Remove-ItemProperty -Path $key -Name "WCEUpdater" -ErrorAction SilentlyContinue
+        $key = "Registry::\$($user.Name)\Software\Microsoft\Windows\CurrentVersion\Run"
+            Remove-ItemProperty -Path $key -Name "WCUpate" -Force -ErrorAction SilentlyContinue
+            Remove-ItemProperty -Path $key -Name "WCStartup" -Force -ErrorAction SilentlyContinue
+            Remove-ItemProperty -Path $key -Name "WCEStartup" -Force -ErrorAction SilentlyContinue
+            Remove-ItemProperty -Path $key -Name "WCEUpdater" -Force -ErrorAction SilentlyContinue
         }
-    }
-}
