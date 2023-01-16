@@ -1,4 +1,4 @@
-#this script removes persistence objects and binaries for the "Web Companion/WebNavigator" adware#
+#this script removes persistence objects and binaries for the "Web Companion/WebNavigator/BrowserAssistant" adware#
 #removes scheduled task#
 Unregister-ScheduledTask -TaskName "WC ScheduledTask" -Confirm:$false
 Unregister-ScheduledTask -TaskName "BB Updater Scheduler" -Confirm:$false
@@ -24,5 +24,18 @@ foreach ($user in $users) {
     }
     if (Test-Path $folder4) {
         Remove-Item $folder4 -Recurse -Force
+    }
+}
+#remove persistence entries left over in reg runkey for each user#
+$users = Get-ChildItem Registry::HKU
+foreach ($user in $users) {
+    if ($user.Name -ne "S-1-5-18") {
+        $key = "HKU:\$($user.Name)\Software\Microsoft\Windows\CurrentVersion\Run"
+        if (Test-Path $key) {
+            Remove-ItemProperty -Path $key -Name "WCUpdate" -ErrorAction SilentlyContinue
+            Remove-ItemProperty -Path $key -Name "WCStartup" -ErrorAction SilentlyContinue
+            Remove-ItemProperty -Path $key -Name "WCEStartup" -ErrorAction SilentlyContinue
+            Remove-ItemProperty -Path $key -Name "WCEUpdater" -ErrorAction SilentlyContinue
+        }
     }
 }
