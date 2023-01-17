@@ -12,6 +12,7 @@ foreach ($user in $users) {
     $folder2 = "$($user.FullName)\AppData\Roaming\Browser Extension"
     $folder3 = "$($user.FullName)\AppData\Local\WebNavigatorBrowser"
     $folder4 = "$($user.FullName)\AppData\Local\BlazeMedia"
+    $folder5 = "$($user.FullName)\AppData\Roaming\Browser Assistant"
     # check if the folder exist and then remove them
     if (Test-Path $folder1) {
         Remove-Item $folder1 -Recurse -Force
@@ -25,6 +26,9 @@ foreach ($user in $users) {
     if (Test-Path $folder4) {
         Remove-Item $folder4 -Recurse -Force
     }
+    if (Test-Path $folder4) {
+        Remove-Item $folder5 -Recurse -Force
+    }
 }
 #remove persistence entries left over in reg runkey for each user#
 $users = Get-ChildItem Registry::HKU
@@ -34,4 +38,6 @@ foreach ($user in $users) {
             Remove-ItemProperty -Path $key -Name "WCStartup" -Force -ErrorAction SilentlyContinue
             Remove-ItemProperty -Path $key -Name "WCEStartup" -Force -ErrorAction SilentlyContinue
             Remove-ItemProperty -Path $key -Name "WCEUpdater" -Force -ErrorAction SilentlyContinue
+            Remove-ItemProperty -Path $key -Name "BAStartup" -Force -ErrorAction SilentlyContinue
+            Remove-ItemProperty -Path $key -Name "BAUpdater" -Force -ErrorAction SilentlyContinue
         }
