@@ -2,6 +2,7 @@
 #removes scheduled task#
 Unregister-ScheduledTask -TaskName "WC ScheduledTask" -Confirm:$false
 Unregister-ScheduledTask -TaskName "BB Updater Scheduler" -Confirm:$false
+Unregister-ScheduledTask -TaskName "BA Scheduler" -Confirm:$false
 #remove folder for each user on system#
 #Get all users profiles
 $users = Get-ChildItem "C:\Users" -Directory 
