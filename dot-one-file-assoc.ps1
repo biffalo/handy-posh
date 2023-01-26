@@ -20,3 +20,4 @@ foreach ($user in $users) {
 #set machine default#
 $oneKey = "HKLM:\SOFTWARE\Classes\.one"
 Set-ItemProperty -Path $onekey -Name "(Default)" -Value "Microsoft.WindowsNotepad_8wekyb3d8bbwe!App" -Force -ErrorAction SilentlyContinue
+Set-ItemProperty -Path $onekey -Name "Content Type" -Value "text/plain" -Force -ErrorAction SilentlyContinue
