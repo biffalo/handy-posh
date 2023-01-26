@@ -9,6 +9,8 @@ foreach ($user in $users) {
 foreach ($user in $users) {
         $key = "Registry::\$($user.Name)\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.one\UserChoice"
             Get-Item -Path $key | Remove-Item -Force -Verbose
-            Remove-ItemProperty -Path $key -Name "ProgID" -Force
-            Remove-ItemProperty -Path $key -Name "Hash" -Force 
+            }
+foreach ($user in $users) {
+        $key = "Registry::\$($user.Name)\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.one\OpenWithProgids"
+            Get-Item -Path $key | Remove-Item -Force -Verbose
             }
