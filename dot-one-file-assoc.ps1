@@ -9,11 +9,13 @@ foreach ($user in $users) {
 #remove existing user pref#
 foreach ($user in $users) {
         $key = "Registry::\$($user.Name)\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.one\UserChoice"
+            Get-Item -Path $key | Remove-Item -Force -ErrorAction SilentlyContinue
             Remove-ItemProperty -Path $key -Name "ProgID" -Force -ErrorAction SilentlyContinue
             Remove-ItemProperty -Path $key -Name "Hash" -Force -ErrorAction SilentlyContinue
             }
 foreach ($user in $users) {
         $key = "Registry::\$($user.Name)\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.one\OpenWithProgids"
+            Get-Item -Path $key | Remove-Item -Force -ErrorAction SilentlyContinue
             Remove-ItemProperty -Path $key -Name "OneNote.Section.1" -Force -ErrorAction SilentlyContinue
             Remove-ItemProperty -Path $key -Name "Hash" -Force -ErrorAction SilentlyContinue
             }
