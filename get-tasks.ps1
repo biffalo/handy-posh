@@ -4,10 +4,10 @@
 Import-Module ScheduledTasks
 
 # Get a list of all scheduled tasks
-$tasks = Get-ScheduledTask -TaskPath "\"
+$tasks = Get-ScheduledTask -TaskPath "*"
 
 # Loop through each scheduled task
 foreach ($task in $tasks) {
   # Output the task name and action
-  Write-Output "TASKNAME: $($task.Taskname)  TASKACTIONS: $($task.Actions[0].ActionType) $($task.Actions[0].Path) $($task.Actions[0].Arguments)" | Format-List
+  Write-Output "TASKNAME: $($task.Taskname)  TASKACTIONS: $($task.Actions[0].ActionType) $($task.Actions[0].Path) $($task.Actions[0].Arguments)"
 }
