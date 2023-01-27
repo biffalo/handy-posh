@@ -1,8 +1,8 @@
 #All-in-one IR script by Biff. Meant for IR use on Windows systems only. YMMV depending on what kind of logging you have enabled#
 #this requires Persistence Sniper be in the same folder as this script. Get it from https://github.com/last-byte/PersistenceSniper/tree/main/PersistenceSniper#
 #set hostname var as HN to keep things "clean"#
-Write-host "Forensic Recon Starting"
 $HN = $env:computername
+Write-host "Forensic Recon Starting"
 #get running process network info#
 Write-host "Gathering Process Info"
 Get-NetTCPConnection | select LocalAddress,localport,remoteaddress,remoteport,state,@{name="process";Expression={(get-process -id $_.OwningProcess).ProcessName}}, @{Name="cmdline";Expression={(Get-WmiObject Win32_Process -filter "ProcessId = $($_.OwningProcess)").commandline}} | sort Remoteaddress -Descending | Export-Csv -Path .\$HN-Process-network.csv -NoTypeInformation
