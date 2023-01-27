@@ -14,13 +14,13 @@ Write-host "Gathering Scheduled Task Info"
 #get scheduled task info#
 schtasks /query /FO CSV /v | convertfrom-csv | where { $_.TaskName -ne "TaskName" } | select "TaskName","Run As User", Author, "Task to Run"| Export-Csv -Path .\$HN-schd-tasks.csv -NoTypeInformation
 #get prefetch so we can have rough history of exes run on the system#
-Write-host "Gathering Prefect Info"
+Write-host "Gathering Prefecth Info"
 Get-ChildItem C:\Windows\Prefetch | Select Name,LastWriteTime | Export-Csv -Path .\$HN-prefetch.csv -NoTypeInformation
 #get persistence using persistence sniper#
 Write-host "Gathering Persistence Info"
 Import-Module .\PersistenceSniper.psd1
 Find-AllPersistence | Export-Csv -Path .\$HN-persistence.csv -NoTypeInformation
-#get event logs#
+#get event logs but only evtx that actuall have data. default size of unpopulated log is 69632#
 Write-host "Gathering Logs"
 get-childitem C:\Windows\System32\winevt\Logs | where-object {$_.length -gt 69632} | Select -ExpandProperty FullName | Copy-Item -Destination .\logs\
 Write-host "Forensic Recon Complete"
