@@ -5,7 +5,7 @@
 
 
 
-### **AIO-IR.ps1 **
+### **AIO-IR.ps1**
 
 >  Comprehensive Incident Response Script that gathers common forensic info from a windows system for later analysis. 
 
