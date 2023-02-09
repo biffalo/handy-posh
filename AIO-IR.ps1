@@ -12,7 +12,7 @@ Get-NetTCPConnection | select LocalAddress,localport,remoteaddress,remoteport,st
 #! get running process with owner and cli info#
 gwmi win32_process | Select Name,@{n='Owner';e={$_.GetOwner().User}},CommandLine -ErrorAction SilentlyContinue | Sort Name -unique -descending | Export-Csv -Path .\$hn-log\$HN-process-cli.csv -NoTypeInformation
 #! get hash of running processes#
-foreach ($proc in Get-Process | select path) {Get-FileHash $proc.path -Algorithm sha256 -ErrorAction SilentlyContinue | Export-Csv -Append -Path .\$hn-log\$HN-process-hash.csv -NoTypeInformation}
+foreach ($proc in Get-Process | select path -Unique -ErrorAction SilentlyContinue) {Get-FileHash $proc.path -Algorithm sha256 -ErrorAction SilentlyContinue | Export-Csv -Append -Path .\$hn-log\$HN-process-hash.csv -NoTypeInformation}
 Write-host "Gathering Scheduled Task Info" -ForegroundColor 'white' -BackgroundColor 'darkred'
 #! get scheduled task info#
 schtasks /query /FO CSV /v | convertfrom-csv | where { $_.TaskName -ne "TaskName" } | select "TaskName","Run As User", Author, "Task to Run"| Export-Csv -Path .\$hn-log\$HN-schd-tasks.csv -NoTypeInformation
@@ -22,6 +22,13 @@ Get-WmiObject win32_service |? State -match "running" | select Name, DisplayName
 #! get prefetch so we can have rough history of exes run on the system#
 Write-host "Gathering Prefetch Info" -ForegroundColor 'white' -BackgroundColor 'darkred'
 Get-ChildItem C:\Windows\Prefetch | Select Name,LastWriteTime | Export-Csv -Path .\$hn-log\$HN-prefetch.csv -NoTypeInformation
+#! gather app compat artifacts for each user HKU#
+Write-host "Gathering AppCompat Artifacts" -ForegroundColor 'white' -BackgroundColor 'darkred'
+mount -PSProvider Registry -Name HKU -Root HKEY_USERS;
+(gci "HKU:\*\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Compatibility Assistant\Store\", "HKU:\*\Software\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\Layers", "HKU:\*\Software\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\Compatibility Assistant\Persisted").Property >> .\$hn-log\$HN-appcompat.txt
+#! gather extra possible exe names from useage logs for all users#
+Write-host "Gathering .net and C# usage log artifacts" -ForegroundColor 'white' -BackgroundColor 'darkred'
+gci "C:\Users\*\AppData\Local\Microsoft\*\UsageLogs\*", "C:\Windows\System32\config\systemprofile\AppData\Local\Microsoft\*\UsageLogs\*" | Export-Csv -Path .\$hn-log\$HN-extra-use-log.csv -NoTypeInformation
 #! get persistence using persistence sniper#
 Write-host "Gathering Persistence Info" -ForegroundColor 'white' -BackgroundColor 'darkred'
 Import-Module .\PersistenceSniper.psd1
