@@ -11,13 +11,10 @@ ftype vbefile="%SystemRoot%\system32\NOTEPAD.EXE" "%1"
 ::
 ::disable ISO mounting in windows explorer
 reg add "HKEY_CLASSES_ROOT\Windows.IsoFile\shell\mount" /v "ProgrammaticAccessOnly" /t REG_SZ /d no /f
-::disable VHD/VHDX mounting in windows explorer
-reg add "HKEY_CLASSES_ROOT\Windows.VhdFile\shell\mount" /v "ProgrammaticAccessOnly" /t REG_SZ /d no /f
 :: Enable early launch antimalware driver for scan of boot-start drivers
 :: 3 is the default which allows good, unknown and 'bad but critical'. Recommend trying 1 for 'good and unknown' or 8 which is 'good only'
 reg add "HKCU\SYSTEM\CurrentControlSet\Policies\EarlyLaunch" /v DriverLoadPolicy /t REG_DWORD /d 3 /f
-::enable AMSI sig checks
-reg add "HKLM\SOFTWARE\Microsoft\AMSI" /v FeatureBits /t REG_DWORD /d 2 /f
+::
 ::
 ::#######################################################################
 :: Enable and Configure Internet Browser Settings
@@ -39,11 +36,6 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\System" /v EnableSmartScreen /
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\System" /v ShellSmartScreenLevel /t REG_SZ /d Warn /f
 ::
 ::
-:: Windows Update Settings
-:: Prevent Delivery Optimization from downloading Updates from other computers across the internet
-:: 1 will restrict to LAN only. 0 will disable the feature entirely
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization" /v DODownloadMode /t REG_DWORD /d 1 /f
-reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config\" /v DODownloadMode /t REG_DWORD /d 1 /f
 :: 
 :: Removal Media Settings
 :: Disable autorun/autoplay on all drives
