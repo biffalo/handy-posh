@@ -1,14 +1,13 @@
+#chainsaw-what-v2.ps1#
 #this script will automate a chainsaw hunt on the current system utilizing any evt/evtx files in C:\windows\system32\logs#
 #get date and time stuff so we can execute chainsaw automatically without having to remember command line context#
 #prompt user for number of days back to search#
+#!please note this script assumes it is in the same directory as your chainsaw exe and that is is named chainsaw.exe#
 Write-Host "How many days back would you like to search?" -ForegroundColor Magenta
 $days = Read-Host "Enter a Number "
 $from = (get-date).AddDays(-"$days").ToString("yyyy-MM-dd")
 $to = Get-Date -Format "yyyy-MM-dd"
 $ct = Get-Date -Format "HH:mm:ss"
-#change the variable below to wherever your chainsaw folder is located#
-$location = "C:\PortableApps\Chainsaw"
-Set-Location -Path $location
 $option1 = "--level critical"
 $option2 = "--level high"
 $option3 = "--level medium"
