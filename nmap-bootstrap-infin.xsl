@@ -94,7 +94,7 @@ Andreas Hontzia (@honze_net)
               </div>
             </div>
           </div>
-          <h2 id="scannedhosts" class="target">Scanned Hosts<xsl:if test="/nmaprun/runstats/hosts/@down > 1024"><small> (offline hosts are hidden)</small></xsl:if></h2>
+          <h2 id="scannedhosts" class="target">🖥️Scanned Hosts<xsl:if test="/nmaprun/runstats/hosts/@down > 1024"><small> (offline hosts are hidden)</small></xsl:if></h2>
           <div class="table-responsive">
             <table id="table-overview" class="table table-striped dataTable" role="grid">
               <thead>
@@ -142,7 +142,7 @@ Andreas Hontzia (@honze_net)
               "lengthMenu": [ [10, 25, 50, 100, -1], [10, 25, 50, 100, "All"] ]
             });
           </script>
-          <h2 id="onlinehosts" class="target">Online Hosts</h2>
+          <h2 id="onlinehosts" class="target">🖥️Online Hosts</h2>
           <xsl:for-each select="/nmaprun/host[status/@state='up']">
             <div class="panel panel-default">
               <div class="panel-heading clickable" data-toggle="collapse">
@@ -257,7 +257,7 @@ Andreas Hontzia (@honze_net)
               </div>
             </div>
           </xsl:for-each>
-          <h2 id="openservices" class="target">Open Services</h2>
+          <h2 id="openservices" class="target">🖥️Open Services</h2>
           <div class="table-responsive">
             <table id="table-services" class="table table-striped dataTable" role="grid">
               <thead>
