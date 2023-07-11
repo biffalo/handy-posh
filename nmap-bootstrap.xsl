@@ -73,7 +73,7 @@ Andreas Hontzia (@honze_net)
         </nav>
         <div class="container">
           <div class="jumbotron">
-            <h2>🛡️Infinity Technologies<br/><small>Vulnerability Scan Results</small></h2>
+            <h2>Infinity Technologies<br/><small>Vulnerability Scan Results</small></h2>
             <pre style="white-space:pre-wrap; word-wrap:break-word;"><xsl:value-of select="/nmaprun/@args"/></pre>
             <p class="lead">
               <xsl:value-of select="/nmaprun/@startstr"/> – <xsl:value-of select="/nmaprun/runstats/finished/@timestr"/><br/>
