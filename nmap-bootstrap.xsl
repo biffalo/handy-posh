@@ -73,7 +73,7 @@ Andreas Hontzia (@honze_net)
         </nav>
         <div class="container">
           <div class="jumbotron">
-            <h2> <picture> <xsl:attribute name="source"> <xsl:value-of select="/it-report-logo.png" /> </xsl:attribute> </picture> <br/><small>Vulnerability Scan Results:</small></h1>
+            <picture> <xsl:value-of select="/it-report-logo.png" /> </picture> <br/><small>Vulnerability Scan Results:</small></h1>
             <pre style="white-space:pre-wrap; word-wrap:break-word;"><xsl:value-of select="/nmaprun/@args"/></pre>
             <p class="lead">
               <xsl:value-of select="/nmaprun/@startstr"/> – <xsl:value-of select="/nmaprun/runstats/finished/@timestr"/><br/>
