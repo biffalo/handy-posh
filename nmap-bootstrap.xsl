@@ -73,7 +73,12 @@ Andreas Hontzia (@honze_net)
         </nav>
         <div class="container">
           <div class="jumbotron">
-            <h2><img src="https://repo.it-va.com/it-report-logo.png"><br/><small>Vulnerability Scan Results:</small></h1>
+            <h2><img>
+    <xsl:attribute name="src">
+        <xsl:value-of select="https://repo.it-va.com/it-report-logo.png"/>
+    </xsl:attribute>
+</img>
+<br/><small>Vulnerability Scan Results:</small></h1>
             <pre style="white-space:pre-wrap; word-wrap:break-word;"><xsl:value-of select="/nmaprun/@args"/></pre>
             <p class="lead">
               <xsl:value-of select="/nmaprun/@startstr"/> – <xsl:value-of select="/nmaprun/runstats/finished/@timestr"/><br/>
