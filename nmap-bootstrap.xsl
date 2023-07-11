@@ -64,21 +64,16 @@ Andreas Hontzia (@honze_net)
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">
-                <li><a href="#scannedhosts">Scanned Hosts</a></li>
-                <li><a href="#onlinehosts">Online Hosts</a></li>
-                <li><a href="#openservices">Open Services</a></li>
+                <li><a href="#scannedhosts">🔎Scanned Hosts</a></li>
+                <li><a href="#onlinehosts">🔎Online Hosts</a></li>
+                <li><a href="#openservices">🔎Open Services</a></li>
               </ul>
             </div>
           </div>
         </nav>
         <div class="container">
           <div class="jumbotron">
-            <h2><img>
-    <xsl:attribute name="src">
-        <xsl:value-of select="https://repo.it-va.com/it-report-logo.png"/>
-    </xsl:attribute>
-</img>
-<br/><small>Vulnerability Scan Results:</small></h1>
+            <h2> <picture> <xsl:attribute name="source"> <xsl:value-of select="https://repo.it-va.com/it-report-logo.png" /> </xsl:attribute> </picture> <br/><small>Vulnerability Scan Results:</small></h1>
             <pre style="white-space:pre-wrap; word-wrap:break-word;"><xsl:value-of select="/nmaprun/@args"/></pre>
             <p class="lead">
               <xsl:value-of select="/nmaprun/@startstr"/> – <xsl:value-of select="/nmaprun/runstats/finished/@timestr"/><br/>
