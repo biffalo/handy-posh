@@ -64,16 +64,16 @@ Andreas Hontzia (@honze_net)
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">
-                <li><a href="#scannedhosts">Scanned Hosts</a></li>
-                <li><a href="#onlinehosts">Online Hosts</a></li>
-                <li><a href="#openservices">Open Services</a></li>
+                <li><a href="#scannedhosts">🔎Scanned Hosts</a></li>
+                <li><a href="#onlinehosts">🔎Online Hosts</a></li>
+                <li><a href="#openservices">🔎Open Services</a></li>
               </ul>
             </div>
           </div>
         </nav>
         <div class="container">
           <div class="jumbotron">
-            <h2>Infinity Technologies<br/><small>Vulnerability Scan Results</small></h2>
+            <h2>Infinity Technologies<br/><small>🛡️Vulnerability Scan Results</small></h2>
             <pre style="white-space:pre-wrap; word-wrap:break-word;"><xsl:value-of select="/nmaprun/@args"/></pre>
             <p class="lead">
               <xsl:value-of select="/nmaprun/@startstr"/> – <xsl:value-of select="/nmaprun/runstats/finished/@timestr"/><br/>
