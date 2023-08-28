@@ -1,0 +1,2 @@
+#disables active hours. used for servers because microsoft thought it would be a good idea for servers to randomly reboot during business hours#
+reg add "HKLM\Software\Policies\Microsoft\Windows\WindowsUpdate" /v SetActiveHours /t REG_DWORD /d 0 /f
