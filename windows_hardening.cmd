@@ -8,6 +8,7 @@ ftype wsffile="%SystemRoot%\system32\NOTEPAD.EXE" "%1"
 ftype jsfile="%SystemRoot%\system32\NOTEPAD.EXE" "%1"
 ftype jsefile="%SystemRoot%\system32\NOTEPAD.EXE" "%1"
 ftype vbefile="%SystemRoot%\system32\NOTEPAD.EXE" "%1"
+ftype vbsfile="%SystemRoot%\system32\NOTEPAD.EXE" "%1"
 ::
 ::disable ISO mounting in windows explorer
 reg add "HKEY_CLASSES_ROOT\Windows.IsoFile\shell\mount" /v "ProgrammaticAccessOnly" /t REG_SZ /d no /f
