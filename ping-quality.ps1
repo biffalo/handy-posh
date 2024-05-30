@@ -1,3 +1,6 @@
+# Performs ping using test-net connection to whatever IP you specify. Loops until you stop it
+# If ping times out or latency is above 100ms the output will be RED
+# If ping latency is below 100ms the ouput will be GREEN
 # Prompt for the IP address
 $ipAddress = Read-Host -Prompt "Enter the IPv4 address to ping"
 
