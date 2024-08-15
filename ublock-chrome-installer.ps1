@@ -1,4 +1,4 @@
-# Installs uBlock Origin and another Chrome extension in Chrome for all users.
+# Installs uBlock Origin and Ublock Lite in Chrome for all users.
 # This is meant for workgroup environments because this is well documented to do with Chrome GPO things.
 
 # Registry location for Chrome extension policies
