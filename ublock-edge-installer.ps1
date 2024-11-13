@@ -1,6 +1,6 @@
 #installs ublock origin in chrome for all users. this is meant for workgroup environments because this is well documented to do with chrome gpo things#
 # add reg key to keep v2 manifest extensions for another year
-New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Edge" -Force | Out-Null; New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Edge" -Name "ExtensionManifestV2Availability" -PropertyType DWord -Value 2 -Force
+New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Edge" -Name "ExtensionManifestV2Availability" -PropertyType DWord -Value 2 -Force -ErrorAction SilentlyContinue
 
 $regLocation = 'SOFTWARE\Policies\Microsoft\Edge\ExtensionInstallForcelist'
 $regKey = '1'
