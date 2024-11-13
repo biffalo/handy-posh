@@ -1,7 +1,7 @@
 # Installs uBlock Origin in Chrome for all users. Also forces enable v2 manifest to give another year of ublock origin before we switch to lite
 # This is meant for workgroup environments because this is well documented to do with Chrome GPO things.
 # Force enable v2 extensions
-New-Item -Path "HKLM:\SOFTWARE\Policies\Google\Chrome" -Force | Out-Null; New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Google\Chrome" -Name "ExtensionManifestV2Availability" -PropertyType DWord -Value 2 -Force
+New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Google\Chrome" -Name "ExtensionManifestV2Availability" -PropertyType DWord -Value 2 -Force -ErrorAction SilentlyContinue
 
 # Registry location for Chrome extension policies
 $regLocation = 'Software\Policies\Google\Chrome\ExtensionInstallForcelist'
