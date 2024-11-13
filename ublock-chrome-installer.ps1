@@ -25,5 +25,4 @@ New-Item -Path "HKLM:\$regLocation" -Force
 New-ItemProperty -Path "HKLM:\$regLocation" -Name $ublockKey -Value $ublockData -PropertyType STRING -Force
 
 # Remove Ublock Lite
-Remove-ItemProperty -Path "HKLM:\$regLocation" -Name $otherExtensionKey -Force -ErrorAction SilentlyContinue
-
+Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Google\Chrome\ExtensionInstallForcelist" -Name "2" -Force -ErrorAction SilentlyContinue
