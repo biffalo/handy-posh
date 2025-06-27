@@ -26,7 +26,7 @@ Auditpol /set /subcategory:"Logoff" /success:enable /failure:disable
 Auditpol /set /subcategory:"Logon" /success:enable /failure:enable 
 Auditpol /set /subcategory:"Filtering Platform Connection" /success:enable /failure:disable
 Auditpol /set /subcategory:"Removable Storage" /success:enable /failure:enable
-Auditpol /set /subcategory:"SAM" /success:disable /failure:disable
+Auditpol /set /subcategory:"SAM" /success:enable /failure:enable
 Auditpol /set /subcategory:"Filtering Platform Policy Change" /success:disable /failure:disable
 Auditpol /set /subcategory:"IPsec Driver" /success:enable /failure:enable
 Auditpol /set /subcategory:"Security State Change" /success:enable /failure:enable
