@@ -23,7 +23,7 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging"
 Auditpol /set /subcategory:"Security Group Management" /success:enable /failure:enable
 Auditpol /set /subcategory:"Process Creation" /success:enable /failure:enable
 Auditpol /set /subcategory:"Logoff" /success:enable /failure:disable
-Auditpol /set /subcategory:"Logon" /success:enable /failure:enable 
+Auditpol /set /subcategory:"Logon" /success:disable /failure:enable 
 Auditpol /set /subcategory:"Filtering Platform Connection" /success:enable /failure:disable
 Auditpol /set /subcategory:"Removable Storage" /success:enable /failure:enable
 Auditpol /set /subcategory:"SAM" /success:enable /failure:enable
@@ -32,3 +32,4 @@ Auditpol /set /subcategory:"IPsec Driver" /success:enable /failure:enable
 Auditpol /set /subcategory:"Security State Change" /success:enable /failure:enable
 Auditpol /set /subcategory:"Security System Extension" /success:enable /failure:enable
 Auditpol /set /subcategory:"System Integrity" /success:enable /failure:enable
+
