@@ -1,21 +1,54 @@
+# ==============================================================================
+# Installs uBlock Origin Lite (Manifest V3) in Google Chrome for all users
+# ==============================================================================
 
-# Installs uBlock Origin Lite in Chrome for all users.
-# Force enable v2 extensions
-New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Google\Chrome" -Name "ExtensionManifestV2Availability" -PropertyType DWord -Value 2 -Force -ErrorAction SilentlyContinue
+# Ensure script runs with administrative privileges
+$isAdmin = ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+if (-not $isAdmin) {
+    Write-Warning "Please run this PowerShell script as Administrator."
+    return
+}
 
-# Registry location for Chrome extension policies
-$regLocation = 'Software\Policies\Google\Chrome\ExtensionInstallForcelist'
+# uBlock Origin Lite details
+$extensionId  = 'ddkjiahejlhfcafbddmgiahcphecmpfh'
+$updateUrl    = 'https://clients2.google.com/service/update2/crx'
+$forceData    = "$extensionId;$updateUrl"
 
-# Extension IDs and update URLs
-$ublockID = 'ddkjiahejlhfcafbddmgiahcphecmpfh'
-$ublockURL = 'https://clients2.google.com/service/update2/crx'
+# Registry path for Chrome policies
+$forcelistPath = 'HKLM:\SOFTWARE\Policies\Google\Chrome\ExtensionInstallForcelist'
 
-# Registry keys for the extensions
-$ublockKey = '1'
+# Create the policy registry key if it does not already exist
+if (-not (Test-Path $forcelistPath)) {
+    New-Item -Path $forcelistPath -Force | Out-Null
+}
 
-# Registry data (Extension ID and URL)
-$ublockData = "$ublockID;$ublockURL"
+# (Optional) Clean up obsolete Manifest V2 temporary override if previously set
+$chromePolicyPath = 'HKLM:\SOFTWARE\Policies\Google\Chrome'
+if (Get-ItemProperty -Path $chromePolicyPath -Name "ExtensionManifestV2Availability" -ErrorAction SilentlyContinue) {
+    Remove-ItemProperty -Path $chromePolicyPath -Name "ExtensionManifestV2Availability" -Force -ErrorAction SilentlyContinue
+}
 
-# Create the registry location if it doesn't exist and force the installation of uBlock Origin Lite
-New-Item -Path "HKLM:\$regLocation" -Force
-New-ItemProperty -Path "HKLM:\$regLocation" -Name $ublockKey -Value $ublockData -PropertyType STRING -Force
+# Check if uBlock Origin Lite is already in the forcelist, otherwise find the next available numeric slot
+$existingProperties = Get-ItemProperty -Path $forcelistPath
+$alreadyInstalled = $false
+$nextIndex = 1
+
+foreach ($prop in $existingProperties.PSObject.Properties) {
+    if ($prop.Value -like "$extensionId;*") {
+        $alreadyInstalled = $true
+        break
+    }
+    if ($prop.Name -match '^\d+$') {
+        $num = [int]$prop.Name
+        if ($num -ge $nextIndex) {
+            $nextIndex = $num + 1
+        }
+    }
+}
+
+if ($alreadyInstalled) {
+    Write-Host "uBlock Origin Lite is already configured in Chrome's force-install policy." -ForegroundColor Yellow
+} else {
+    New-ItemProperty -Path $forcelistPath -Name $nextIndex.ToString() -Value $forceData -PropertyType String -Force | Out-Null
+    Write-Host "Successfully configured uBlock Origin Lite (slot $nextIndex) for Chrome." -ForegroundColor Green
+}
